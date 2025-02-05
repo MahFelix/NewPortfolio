@@ -1,17 +1,26 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import Trabalhos from './Trabalhos'
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import Trabalhos from './Trabalhos';
 import Sobre from './Sobre';
 
-
-// Definindo variáveis de cores para facilitar a manutenção
+// Definição de cores
 const colors = {
   background: '#1E1E1E',
-  surface: '#000000;',
-  primary: '#000000;',
+  surface: '#000000',
+  primary: '#000000',
   text2: '#ffffff',
-  text:'#2CA1CF',
+  text: '#2CA1CF',
   border: '#333',
 };
+
+// Animação de digitação
+const typing = keyframes`
+  from { width: 0 }
+  to { width: 100% }
+`;
+
+const blink = keyframes`
+  50% { border-color: transparent; }
+`;
 
 // Estilos globais
 const GlobalStyle = createGlobalStyle`
@@ -83,14 +92,19 @@ const HomeContent = styled.div`
 const Name = styled.h1`
   font-size: 3rem;
   margin-bottom: 10px;
+  color: ${colors.text};
 `;
 
 const Subtitle = styled.h2`
   font-size: 1.5rem;
-  color: #ccc;
+  color: ${colors.text2};
+  border-right: 3px solid ${colors.text2};
+  white-space: nowrap;
+  overflow: hidden;
+  width: 16ch;
+  animation: ${typing} 3s steps(16) infinite alternate, ${blink} 0.7s step-end infinite;
 `;
 
-// Componente Button reutilizável
 const Button = styled.button`
   background: ${({ variant }) => (variant === 'outline' ? 'transparent' : colors.primary)};
   color: ${colors.text};
@@ -111,7 +125,6 @@ const Button = styled.button`
   }
 `;
 
-// Componente Portfolio
 const Portfolio = () => {
   return (
     <>
@@ -128,11 +141,11 @@ const Portfolio = () => {
         <Section>
           <HomeContent>
             <Name>Agnaldo Felix</Name>
-            <Subtitle>Desenvolvedor Full Stack e Web Designer</Subtitle>
+            <Subtitle>Desenvolvedor Web e Web Designer   </Subtitle>
           </HomeContent>
         </Section>
-        <Trabalhos/>
-        <Sobre/>
+        <Trabalhos />
+        <Sobre />
       </Container>
     </>
   );

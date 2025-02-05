@@ -55,6 +55,7 @@ const TechBar = () => {
     "/images/AWS.png",
     "/images/Adobe.png",
     "/images/Figma.png",
+    "/images/GitHub.png",
   ];
 
   return (

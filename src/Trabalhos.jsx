@@ -156,13 +156,44 @@ const ProjectLink = styled.a`
   }
 `;
 
+const GitHubButton = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #2CA1CF; /* Azul principal */
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.3s ease, background 0.3s ease;
+  margin: 40px auto 0; /* Centraliza horizontalmente */
+  box-shadow: 0 0 10px #2CA1CF, 0 0 20px #2CA1CF;
+  width: 300px;
+  text-align: center;
+
+  &:hover {
+    background: #1b7fa5; /* Tom mais escuro no hover */
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #2CA1CF, 0 0 30px #2CA1CF;
+  }
+`;
+
+const GitHubLogo = styled.img`
+  width: 35px;
+  height: 35px;
+
+`;
+
 // Componente da página de trabalhos
 const WorksPage = () => {
   return (
     <>
       <GlobalStyle />
       <Container>
-        <Title>Trabalhos</Title>
+        <Title>TRABALHOS</Title>
         <ProjectContainer>
           <ImageWrapper>
             <ProjectImage src={Pro} />
@@ -223,6 +254,10 @@ const WorksPage = () => {
             <ProjectLink href="#" target='_blank'>Link do projeto</ProjectLink>
           </ProjectContent>
         </ProjectContainer>
+        <GitHubButton href="https://github.com/MahFelix" target="_blank">
+             <GitHubLogo src="/images/GitHub.png" alt="GitHub" />
+                  Veja mais projetos
+        </GitHubButton>
       </Container>
     </>
   );

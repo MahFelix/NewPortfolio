@@ -14,7 +14,7 @@ const SobreContainer = styled.div`
 `;
 
 const Titulo = styled.h1`
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   margin-bottom: 50px;
   text-align: center;
@@ -128,7 +128,7 @@ const Sobre = () => {
             <Dot />
             <MovingDot />
           </DotsContainer>
-          <h2>DESIGNER</h2>
+          <h2> WEB DESIGNER</h2>
           <p>
             Sou um web designer especializado em criar sites e interfaces visuais utilizando
             ferramentas como WordPress e Elementor. Meu trabalho combina design funcional e criativo, 
