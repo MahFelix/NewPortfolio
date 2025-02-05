@@ -175,7 +175,7 @@ const WorksPage = () => {
             <ProjectDescription>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel purus at sapien ultrices tincidunt.
             </ProjectDescription>
-            <ProjectLink href="https://cherryblossomsite.netlify.app/" >Link do projeto</ProjectLink>
+            <ProjectLink href="https://cherryblossomsite.netlify.app/" target='_blank'>Link do projeto</ProjectLink>
           </ProjectContent>
         </ProjectContainer>
         <ProjectContainer style={{ flexDirection: 'row-reverse' }}>
@@ -190,7 +190,7 @@ const WorksPage = () => {
             <ProjectDescription>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel purus at sapien ultrices tincidunt.
             </ProjectDescription>
-            <ProjectLink href="#">Link do projeto</ProjectLink>
+            <ProjectLink href="#"target='_blank'>Link do projeto</ProjectLink>
           </ProjectContent>
         </ProjectContainer>
         <ProjectContainer>
@@ -205,7 +205,7 @@ const WorksPage = () => {
             <ProjectDescription>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel purus at sapien ultrices tincidunt.
             </ProjectDescription>
-            <ProjectLink href="#">Link do projeto</ProjectLink>
+            <ProjectLink href="#" target='_blank'>Link do projeto</ProjectLink>
           </ProjectContent>
         </ProjectContainer>
         <ProjectContainer style={{ flexDirection: 'row-reverse' }}>
@@ -220,7 +220,7 @@ const WorksPage = () => {
             <ProjectDescription>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel purus at sapien ultrices tincidunt.
             </ProjectDescription>
-            <ProjectLink href="#">Link do projeto</ProjectLink>
+            <ProjectLink href="#" target='_blank'>Link do projeto</ProjectLink>
           </ProjectContent>
         </ProjectContainer>
       </Container>

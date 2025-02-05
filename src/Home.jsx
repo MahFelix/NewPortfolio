@@ -6,8 +6,8 @@ import Sobre from './Sobre';
 // Definindo variáveis de cores para facilitar a manutenção
 const colors = {
   background: '#1E1E1E',
-  surface: '#1e1e1e',
-  primary: '#292929',
+  surface: '#000000;',
+  primary: '#000000;',
   text2: '#ffffff',
   text:'#2CA1CF',
   border: '#333',

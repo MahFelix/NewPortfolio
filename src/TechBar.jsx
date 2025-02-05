@@ -1,26 +1,28 @@
 import styled, { keyframes } from "styled-components";
 
+// Animação de deslize
 const slide = keyframes`
   from {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
   to {
     transform: translateX(-100%);
   }
 `;
 
+// Container principal
 const TechBarContainer = styled.div`
   width: 100%;
   overflow: hidden;
   background: transparent;
-  border: 2px solid #2CA1CF;
+  border: 2px solid #2ca1cf;
   padding: 10px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
   position: relative;
 `;
 
+// Container do slider
 const TechSlider = styled.div`
   display: flex;
   gap: 30px;
@@ -28,6 +30,7 @@ const TechSlider = styled.div`
   animation: ${slide} 30s linear infinite;
 `;
 
+// Estilo das imagens
 const TechImage = styled.img`
   height: 50px;
   filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.5));
@@ -35,17 +38,28 @@ const TechImage = styled.img`
 
 const TechBar = () => {
   const techs = [
-    "/images/react.png",
-    "/images/javascript.png",
-    "/images/styled-components.png",
-    "/images/node.png",
-    "/images/express.png",
-    "/images/mongodb.png",
-    "/images/java.png"
+    "/images/JavaScript.png",
+    "/images/React.png",
+    "/images/Node.js.png",
+    "/images/Tailwind CSS.png",
+    "/images/Sass.png",
+    "/images/Bootstrap.png",
+    "/images/Java.png",
+    "/images/Spring.png",
+    "/images/PostgresSQL.png",
+    "/images/MySQL.png",
+    "/images/MongoDB.png",
+    "/images/Firebase.png",
+    "/images/Docker.png",
+    "/images/Azure.png",
+    "/images/AWS.png",
+    "/images/Adobe.png",
+    "/images/Figma.png",
   ];
 
   return (
     <TechBarContainer>
+      {/* Duplicar as imagens para criar um efeito contínuo */}
       <TechSlider>
         {techs.concat(techs).map((tech, index) => (
           <TechImage key={index} src={tech} alt="Tech Logo" />
