@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import Trabalhos from './Trabalhos';
+import Trabalhos from './WorksPage';
 import Sobre from './Sobre';
+import ExperienceStats from './Experience';
+import ContactSection from './Contact';
 
 // Definição de cores
 const colors = {
@@ -63,17 +65,24 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid ${colors.border};
+  height: 0;
 `;
 
 const Nav = styled.nav`
+  width: 100%;
   display: flex;
-  gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+  background: ${colors.primary};
+
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 10px;
   }
 `;
+
 
 const Section = styled.section`
   padding: 50px 20px;
@@ -114,6 +123,7 @@ const Button = styled.button`
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.3s, color 0.3s;
+  width: 100%;
 
   &:hover {
     background: ${({ variant }) => (variant === 'outline' ? colors.text : colors.surface)};
@@ -146,6 +156,8 @@ const Portfolio = () => {
         </Section>
         <Trabalhos />
         <Sobre />
+        <ExperienceStats/>
+        <ContactSection/>
       </Container>
     </>
   );

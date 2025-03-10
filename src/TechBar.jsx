@@ -11,59 +11,85 @@ const slide = keyframes`
 `;
 
 // Container principal
-const TechBarContainer = styled.div`
-  width: 100%;
-  overflow: hidden;
-  background: transparent;
-  border: 2px solid #2ca1cf;
-  padding: 10px 0;
+const TechBarContainer = styled.section`
   display: flex;
-  align-items: center;
-  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  place-items: center;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  opacity: 1;
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 8%, rgb(0, 0, 0) 92%, rgba(0, 0, 0, 0) 100%);
+  overflow: hidden;
+  background-color: #2CA1CF; // Cor de fundo
 `;
 
 // Container do slider
-const TechSlider = styled.div`
+const TechSlider = styled.ul`
   display: flex;
-  gap: 30px;
-  white-space: nowrap;
+  width: 100%;
+  height: 120%;
+  max-width: 100%;
+  max-height: 100%;
+  place-items: center;
+  margin: 0;
+  padding: 20px;
+  list-style-type: none;
+  text-indent: none;
+  gap: 52px;
+  position: relative;
+  flex-direction: row;
+  will-change: transform;
   animation: ${slide} 30s linear infinite;
 `;
 
-// Estilo das imagens
-const TechImage = styled.img`
-  height: 50px;
-  filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.5));
+// Estilo dos itens
+const TechItem = styled.li`
+  width: 170px;
+  height: 46px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  
 `;
 
 const TechBar = () => {
-  const techs = [
-    "/images/JavaScript.png",
-    "/images/React.png",
-    "/images/Node.js.png",
-    "/images/Tailwind CSS.png",
-    "/images/Sass.png",
-    "/images/Bootstrap.png",
-    "/images/Java.png",
-    "/images/Spring.png",
-    "/images/PostgresSQL.png",
-    "/images/MySQL.png",
-    "/images/MongoDB.png",
-    "/images/Firebase.png",
-    "/images/Docker.png",
-    "/images/Azure.png",
-    "/images/AWS.png",
-    "/images/Adobe.png",
-    "/images/Figma.png",
-    "/images/GitHub.png",
+  const items = [
+    { text: "JavaScript", image: "/images/JavaScript.png" },
+    { text: "React", image: "/images/React.png" },
+    { text: "Node.js", image: "/images/Node.js.png" },
+    { text: "Tailwind CSS", image: "/images/Tailwind CSS.png" },
+    { text: "Sass", image: "/images/Sass.png" },
+    { text: "Bootstrap", image: "/images/Bootstrap.png" },
+    { text: "Java", image: "/images/Java.png" },
+    { text: "Spring", image: "/images/Spring.png" },
+    { text: "PostgreSQL", image: "/images/PostgresSQL.png" },
+    { text: "MySQL", image: "/images/MySQL.png" },
+    { text: "MongoDB", image: "/images/MongoDB.png" },
+    { text: "Firebase", image: "/images/Firebase.png" },
+    { text: "Docker", image: "/images/Docker.png" },
+    { text: "Azure", image: "/images/Azure.png" },
+    { text: "AWS", image: "/images/AWS.png" },
+    { text: "Adobe", image: "/images/Adobe.png" },
+    { text: "Figma", image: "/images/Figma.png" },
+    { text: "GitHub", image: "/images/GitHub.png" },
   ];
 
   return (
     <TechBarContainer>
-      {/* Duplicar as imagens para criar um efeito contínuo */}
+      {/* Duplicar os itens para criar um efeito contínuo */}
       <TechSlider>
-        {techs.concat(techs).map((tech, index) => (
-          <TechImage key={index} src={tech} alt="Tech Logo" />
+        {items.concat(items).map((item, index) => (
+          <TechItem key={index}>
+            <img src={item.image} alt={item.text} style={{ height: '24px', marginRight: '8px' }} />
+            <p style={{ fontFamily: 'DM Sans, DM Sans Placeholder, sans-serif', fontSize: '18px', fontWeight: 500, color: 'white' }}>{item.text}</p>
+          </TechItem>
         ))}
       </TechSlider>
     </TechBarContainer>

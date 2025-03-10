@@ -118,7 +118,7 @@ const MovingDot = styled.div`
 const Sobre = () => {
   return (
     <SobreContainer>
-      <Titulo>SOBRE</Titulo>
+      <Titulo>SOBRE MIM</Titulo>
       <Secao>
         <Card>
           <DotsContainer>
