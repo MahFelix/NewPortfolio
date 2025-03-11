@@ -176,6 +176,7 @@ const ProjectDescription = styled.p`
   margin-bottom: 20px;
   font-size: 1rem;
   line-height: 1.4;
+  color: #000000ba;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -294,7 +295,7 @@ const WorksPage = () => {
       image: Pro,
       title: "Cherry Blossom",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      technologies: ["React", "Node.js", "MongoDB"],
+      technologies: ["React", "Node.js", "MongoDB","React", "Node.js"],
       link: "https://cherryblossomsite.netlify.app/",
     },
     {

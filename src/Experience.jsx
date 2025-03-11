@@ -97,6 +97,10 @@ const Description = styled.div`
     color: #ffffffae;
   }
 
+  strong {
+    color: #ffffff;
+  }
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
