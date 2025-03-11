@@ -44,6 +44,11 @@ const TechSlider = styled.ul`
   flex-direction: row;
   will-change: transform;
   animation: ${slide} 30s linear infinite;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+  
 `;
 
 // Estilo dos itens
@@ -54,8 +59,15 @@ const TechItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.171);
   border-radius: 99px;
+ 
+
+  @media (max-width: 768px) {
+    width: 120px;
+    animation: ${slide} 5s linear infinite;
+    padding: 10px;
+  }
   
 `;
 

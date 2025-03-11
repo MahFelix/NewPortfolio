@@ -11,7 +11,7 @@ const colors = {
 // Estilos globais
 const GlobalStyle = styled.div`
   background-color: ${colors.background};
-  color: ${colors.text};
+
   font-family: 'Arial', sans-serif;
   padding: 40px;
   display: flex;
@@ -40,14 +40,14 @@ const StatsContainer = styled.div`
     flex-direction: column;
     width: 90%;
     align-items: center;
-  
   }
 `;
 
 // Moldura para cada item
 const StatsItem = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Ícone em cima, texto embaixo */
+  align-items: flex-start; /* Alinha o conteúdo à esquerda */
   margin-bottom: 20px;
   padding: 20px;
   border: 1px solid ${colors.border};
@@ -55,6 +55,7 @@ const StatsItem = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 400px;
+  text-align: start; /* Alinha o texto à esquerda */
 
   strong {
     font-size: 32px;
@@ -71,8 +72,6 @@ const StatsItem = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    flex-direction: column;
-    text-align: center;
     padding: 15px;
 
     strong {
@@ -84,19 +83,19 @@ const StatsItem = styled.div`
 // Ícone (substitua por um ícone real ou componente de ícone)
 const Icon = styled.div`
   font-size: 2rem;
-  margin-right: 20px;
-  color: ${colors.text};
+  margin-bottom: 20px; /* Espaçamento abaixo do ícone */
 
-  @media (max-width: 768px) {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
 `;
 
 // Descrição
 const Description = styled.div`
   font-size: 1rem;
   line-height: 1.5;
+  text-align: start; /* Alinha o texto à esquerda */
+
+  span{
+    color: #ffffffae;
+  }
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -109,26 +108,26 @@ const ExperienceStats = () => {
     <GlobalStyle>
       <StatsContainer>
         <StatsItem>
-          <Icon>📅</Icon> {/* Substitua por um ícone real */}
+          <Icon className='icones'>📅</Icon> {/* Substitua por um ícone real */}
           <Description>
             <strong>+ 3 anos de experiência</strong><br />
-            Transformando ideias em experiências digitais inovadoras e centradas no usuário.
+            <span>Transformando ideias em experiências digitais inovadoras e centradas no usuário.</span>
           </Description>
         </StatsItem>
 
         <StatsItem>
-          <Icon>📂</Icon> {/* Substitua por um ícone real */}
+          <Icon className='icones'>📂</Icon> {/* Substitua por um ícone real */}
           <Description>
             <strong>+ 50 projetos realizados</strong><br />
-            Onde cada desafio contribuiu para ampliar mais minha experiência e refinar habilidades.
+            <span>Onde cada desafio contribuiu para ampliar mais minha experiência e refinar habilidades.</span>
           </Description>
         </StatsItem>
 
         <StatsItem>
-          <Icon>🖌️</Icon> {/* Substitua por um ícone real */}
+          <Icon className='icones'>🖌️</Icon> {/* Substitua por um ícone real */}
           <Description>
-            <strong>+  18 interfaces criadas</strong><br />
-            Cada detalhe pensado para oferecer interfaces funcionais e intuitivas.
+            <strong>+ 18 interfaces criadas</strong><br />
+            <span>Cada detalhe pensado para oferecer interfaces funcionais e intuitivas.</span>
           </Description>
         </StatsItem>
       </StatsContainer>

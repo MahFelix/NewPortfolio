@@ -1,12 +1,13 @@
-
 import styled, { keyframes } from 'styled-components';
-import { FaLinkedin, FaInstagram, FaWhatsapp, FaEnvelope } from 'react-icons/fa'; // Importando ícones
+import { FaLinkedin, FaInstagram, FaWhatsapp, FaEnvelope, FaGithub } from 'react-icons/fa'; // Importando ícones
+import Profile from './assets/me2.jpg';
+import Fundo from './assets/Fundo.svg'
 
 // Definindo variáveis de cores
 const colors = {
   background: '#000000',
   text: '#FFFFFF',
-  highlight: '#103d4e',
+  highlight: '#4E74A6',
   border: 'rgba(255, 255, 255, 0.2)',
 };
 
@@ -22,20 +23,19 @@ const GlobalStyle = styled.div`
   background-color: ${colors.background};
   color: ${colors.text};
   font-family: 'Arial', sans-serif;
-  padding: 40px;
+  padding-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 40vh;
+  min-height: 20vh;
 `;
 
 // Container principal
 const ContactContainer = styled.div`
   background-color: ${colors.highlight};
   padding: 40px;
-  border-radius: 15px;
+  border-radius: 50px 50px 0px 0px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
   width: 100%;
   display: flex;
   gap: 40px;
@@ -51,6 +51,11 @@ const ContactContainer = styled.div`
 const TextColumn = styled.div`
   flex: 1;
   text-align: start;
+  padding-left: 200px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 // Coluna da imagem
@@ -59,10 +64,15 @@ const ImageColumn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-right: 100px;
+  background-image: url(${Fundo});
 
   img {
-    max-width: 100%;
-    border-radius: 10px;
+    width: 300px; /* Tamanho reduzido da imagem */
+    height: 300px; /* Tamanho reduzido da imagem */
+    border-radius: 50%; /* Moldura redonda */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    border: 4px solid ${colors.text}; /* Borda ao redor da imagem */
   }
 
   @media (max-width: 768px) {
@@ -101,6 +111,7 @@ const Description = styled.p`
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 30px;
+  color: #ffffffac;
 `;
 
 // Linha divisória
@@ -172,13 +183,16 @@ const ContactSection = () => {
             <ContactLink href="mailto:agnaldo12543@hotmail.com">
               <FaEnvelope /> Email
             </ContactLink>
+            <ContactLink href="https://github.com/MahFelix" target="_blank">
+              <FaGithub /> GitHub
+            </ContactLink>
           </ContactInfo>
           <Footer>
             © Agnaldo Felix<br />
           </Footer>
         </TextColumn>
         <ImageColumn>
-          <img src="https://via.placeholder.com/400" alt="Imagem de exemplo" /> {/* Substitua pela sua imagem */}
+          <img src={Profile} alt="Imagem de perfil" /> {/* Imagem de perfil com moldura redonda */}
         </ImageColumn>
       </ContactContainer>
     </GlobalStyle>

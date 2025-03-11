@@ -3,6 +3,8 @@ import Trabalhos from './WorksPage';
 import Sobre from './Sobre';
 import ExperienceStats from './Experience';
 import ContactSection from './Contact';
+import WorksPageMobile from './WorkPageMobile';
+import NavBar from './NavBar';
 
 // Definição de cores
 const colors = {
@@ -13,16 +15,6 @@ const colors = {
   text: '#2CA1CF',
   border: '#333',
 };
-
-// Animação de digitação
-const typing = keyframes`
-  from { width: 0 }
-  to { width: 100% }
-`;
-
-const blink = keyframes`
-  50% { border-color: transparent; }
-`;
 
 // Estilos globais
 const GlobalStyle = createGlobalStyle`
@@ -56,83 +48,117 @@ const GlobalStyle = createGlobalStyle`
 // Componentes estilizados
 const Container = styled.div`
   text-align: center;
+  position: relative;
 `;
 
-const Header = styled.header`
-  background: ${colors.primary};
-  padding: 20px;
+const Section = styled.section`
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid ${colors.border};
-  height: 0;
-`;
-
-const Nav = styled.nav`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: ${colors.primary};
-
+  background: ${colors.surface};
+  position: relative;
 
   @media (max-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
+    height: 100vh;
   }
 `;
 
-
-const Section = styled.section`
-  padding: 50px 20px;
-  background: ${colors.surface};
-  min-height: 100vh;
+const HomeContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 `;
 
-const HomeContent = styled.div`
-  text-align: center;
+const Greeting = styled.p`
+  color: aliceblue;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 `;
 
 const Name = styled.h1`
   font-size: 3rem;
-  margin-bottom: 10px;
-  color: ${colors.text};
-`;
+  color: white;
+  text-shadow: ${colors.text} 0px 0px 4px;
+  text-align: center;
+  margin-bottom: 20px;
 
-const Subtitle = styled.h2`
-  font-size: 1.5rem;
-  color: ${colors.text2};
-  border-right: 3px solid ${colors.text2};
-  white-space: nowrap;
-  overflow: hidden;
-  width: 16ch;
-  animation: ${typing} 3s steps(16) infinite alternate, ${blink} 0.7s step-end infinite;
-`;
-
-const Button = styled.button`
-  background: ${({ variant }) => (variant === 'outline' ? 'transparent' : colors.primary)};
-  color: ${colors.text};
-  border: 1px solid ${colors.text};
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s, color 0.3s;
-  width: 100%;
-
-  &:hover {
-    background: ${({ variant }) => (variant === 'outline' ? colors.text : colors.surface)};
-    color: ${({ variant }) => (variant === 'outline' ? colors.background : colors.text)};
+  span {
+    color: #2CA1CF;
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+    font-size: 2rem;
   }
+`;
+
+const Welcome = styled.p`
+  color: aliceblue;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+`;
+
+const orbit = keyframes`
+  0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+`;
+
+const AtomContainer = styled.div`
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: 15%;
+  right: 47%;
+  z-index: 0;
+
+  @media (max-width: 768px) {
+    width: 120px;
+  height: 120px;
+  top: 10%;
+  right: 35%;
+  }
+
+
+`;
+
+/* Núcleo do átomo */
+const Nucleus = styled.div`
+  width: 20px;
+  height: 20px;
+  background-color: #2CA1CF;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+/* Elétrons orbitando */
+const Electron = styled.div`
+  width: 8px;
+  height: 8px;
+  background-color: #2CA1CF;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ${orbit} ${(props) => props.duration || "3s"} linear infinite;
+`;
+
+/* Órbitas dos elétrons */
+const Orbit = styled.div`
+  width: ${(props) => props.size || "100px"};
+  height: ${(props) => props.size || "100px"};
+  border: 2px dashed rgba(44, 161, 207, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const Portfolio = () => {
@@ -140,24 +166,39 @@ const Portfolio = () => {
     <>
       <GlobalStyle />
       <Container>
-        <Header>
-          <Nav>
-            <Button variant="outline">Início</Button>
-            <Button variant="outline">Trabalhos</Button>
-            <Button variant="outline">Sobre</Button>
-            <Button variant="outline">Contato</Button>
-          </Nav>
-        </Header>
+        <NavBar />
         <Section>
+          <AtomContainer>
+            <Nucleus />
+            <Orbit size="60px">
+              <Electron duration="2s" />
+            </Orbit>
+            <Orbit size="100px">
+              <Electron duration="3s" style={{ animationDelay: "-1.5s" }} />
+              <Electron duration="3s" style={{ animationDelay: "-0.75s" }} />
+            </Orbit>
+            <Orbit size="140px">
+              <Electron duration="4s" style={{ animationDelay: "-2s" }} />
+              <Electron duration="4s" style={{ animationDelay: "-1s" }} />
+              <Electron duration="4s" style={{ animationDelay: "-0.5s" }} />
+            </Orbit>
+          </AtomContainer>
           <HomeContent>
-            <Name>Agnaldo Felix</Name>
-            <Subtitle>Desenvolvedor Web e Web Designer   </Subtitle>
+            <Greeting>"Hello Guys!" I am</Greeting>
+            <Name>
+              <span>Agnaldo Felix</span>
+              <br />
+              Programador Full Stack <br></br><span>&</span> <br />
+              Web Designer
+            </Name>
+            <Welcome>Bem vindos ao meu portfólio.</Welcome>
           </HomeContent>
         </Section>
         <Trabalhos />
+        <WorksPageMobile />
         <Sobre />
-        <ExperienceStats/>
-        <ContactSection/>
+        <ExperienceStats />
+        <ContactSection />
       </Container>
     </>
   );

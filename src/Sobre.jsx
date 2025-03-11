@@ -1,4 +1,3 @@
-
 import styled, { keyframes } from "styled-components";
 import TechBar from "./TechBar";
 
@@ -18,6 +17,7 @@ const Titulo = styled.h1`
   font-weight: bold;
   margin-bottom: 50px;
   text-align: center;
+  padding-top: 20px;
 `;
 
 const Secao = styled.div`
@@ -33,6 +33,8 @@ const Secao = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     text-align: center;
+    width: 100%;
+    gap: 60px; /* Aumentei o gap para dar espaço para a animação */
   }
 `;
 
@@ -58,61 +60,121 @@ const Card = styled.div`
   p {
     font-size: 1rem;
     line-height: 1.6;
+    color: #2ca1cfc1;
+  
   }
 
   @media (max-width: 768px) {
     justify-self: center;
     margin-top: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:nth-child(2) {
+      margin-top: 0;
+    }
   }
 `;
 
-/* Animação para os pontinhos principais */
-const moveDots = keyframes`
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(10px, -10px); }
-  50% { transform: translate(-10px, -10px); }
-  75% { transform: translate(-10px, 10px); }
-  100% { transform: translate(0, 0); }
+/* Animação para os elétrons orbitando */
+const orbit = keyframes`
+  0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
 `;
 
-/* Animação para o pontinho que se move entre eles */
-const movingDot = keyframes`
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(10px, 5px); }
-  50% { transform: translate(-5px, -10px); }
-  75% { transform: translate(10px, -5px); }
-  100% { transform: translate(0, 0); }
-`;
-
-/* Container dos pontinhos */
-const DotsContainer = styled.div`
+/* Container para o átomo */
+const AtomContainer = styled.div`
   position: absolute;
-  width: 40px;
-  height: 40px;
-  top: -20px;
-  right: -20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  width: 120px;
+  height: 120px;
+  top: 1%;
+  left: -20%;
+  transform: translate(-50%, -50%);
+  @media (max-width: 768px) {
+    display: none; /* Esconde no mobile */
+  }
+
+`;
+const AtomContainer2 = styled.div`
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  bottom: -15%;
+  right: -40%;
+  transform: translate(-50%, -50%);
+
+  @media (max-width: 768px) {
+    display: none; /* Esconde no mobile */
+  }
 `;
 
-/* Pontinhos fixos que se movem */
-const Dot = styled.div`
-  width: 6px;
-  height: 6px;
-  border: 2px solid #2CA1CF;
-  border-radius: 50%;
-  animation: ${moveDots} 2s infinite ease-in-out alternate;
-`;
-
-/* Pontinho que se movimenta entre os outros */
-const MovingDot = styled.div`
-  width: 6px;
-  height: 6px;
+/* Núcleo do átomo */
+const Nucleus = styled.div`
+  width: 20px;
+  height: 20px;
   background-color: #2CA1CF;
   border-radius: 50%;
   position: absolute;
-  animation: ${movingDot} 1.5s infinite ease-in-out alternate;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+/* Elétrons orbitando */
+const Electron = styled.div`
+  width: 8px;
+  height: 8px;
+  background-color: #2CA1CF;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ${orbit} ${(props) => props.duration || "3s"} linear infinite;
+`;
+
+/* Órbitas dos elétrons */
+const Orbit = styled.div`
+  width: ${(props) => props.size || "100px"};
+  height: ${(props) => props.size || "100px"};
+  border: 2px dashed rgba(44, 161, 207, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+
+/* Animação para os dots no mobile */
+const moveDot = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+`;
+
+/* Container para os dots no mobile */
+const MobileDotsContainer = styled.div`
+  display: none; /* Esconde por padrão */
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+`;
+
+/* Dot no mobile */
+const MobileDot = styled.div`
+  width: 10px;
+  height: 10px;
+  background-color: #2CA1CF;
+  border-radius: 50%;
+  animation: ${moveDot} 1.5s infinite ease-in-out;
+  animation-delay: ${(props) => props.delay || "0s"};
 `;
 
 const Sobre = () => {
@@ -121,52 +183,70 @@ const Sobre = () => {
       <Titulo>SOBRE MIM</Titulo>
       <Secao>
         <Card>
-          <DotsContainer>
-            <Dot />
-            <Dot />
-            <Dot />
-            <Dot />
-            <MovingDot />
-          </DotsContainer>
-          <h2> WEB DESIGNER</h2>
+          <AtomContainer>
+            <Nucleus />
+            <Orbit size="60px">
+              <Electron duration="2s" />
+            </Orbit>
+            <Orbit size="100px">
+              <Electron duration="3s" style={{ animationDelay: "-1.5s" }} />
+              <Electron duration="3s" style={{ animationDelay: "-0.75s" }} />
+            </Orbit>
+            <Orbit size="140px">
+              <Electron duration="4s" style={{ animationDelay: "-2s" }} />
+              <Electron duration="4s" style={{ animationDelay: "-1s" }} />
+              <Electron duration="4s" style={{ animationDelay: "-0.5s" }} />
+            </Orbit>
+          </AtomContainer>
+
+           {/* Animação do mobile (visível apenas no mobile) */}
+           <MobileDotsContainer>
+            <MobileDot delay="0s" />
+            <MobileDot delay="0.5s" />
+            <MobileDot delay="1s" />
+          </MobileDotsContainer>
+
+          <h2>WEB DESIGNER</h2>
           <p>
-            Sou um web designer especializado em criar sites e interfaces visuais utilizando
-            ferramentas como WordPress e Elementor. Meu trabalho combina design funcional e criativo, 
-            desenvolvido com o suporte de ferramentas como Photoshop e Figma para garantir layouts modernos, 
-            responsivos e alinhados à identidade visual do cliente. Com foco na experiência do usuário, 
-            entrego soluções personalizadas que transformam ideias em projetos digitais únicos e impactantes.
+            Apaixonado por design moderno e interfaces intuitivas, crio experiências visuais envolventes para aplicações web, utilizando Figma e PhotoshopCS6. 
+            Desenvolvo com Wordpress ou React , garantindo layouts responsivos, animações suaves e transições elegantes. 
+            Meu foco é desenvolver interfaces limpas e funcionais, priorizando usabilidade e estética. 
+            Tenho experiência na criação de dashboards administrativos, e-commerces e aplicativos interativos, s
+            empre buscando inovação e acessibilidade.
           </p>
-          <DotsContainer>
-           <Dot />
-            <Dot />
-            <Dot />
-            <Dot />
-            <Dot />
-            <MovingDot />
-          </DotsContainer>
         </Card>
         <Card>
-          <DotsContainer>
-           <Dot />
-            <Dot />
-            <Dot />
-            <Dot />
-            <Dot />
-            <Dot />
-            <Dot />
-            <MovingDot />
-          </DotsContainer>
+          <AtomContainer2>
+            <Nucleus />
+            <Orbit size="60px">
+              <Electron duration="2s" />
+            </Orbit>
+            <Orbit size="100px">
+              <Electron duration="3s" style={{ animationDelay: "-1.5s" }} />
+              <Electron duration="3s" style={{ animationDelay: "-0.75s" }} />
+            </Orbit>
+            <Orbit size="140px">
+              <Electron duration="4s" style={{ animationDelay: "-2s" }} />
+              <Electron duration="4s" style={{ animationDelay: "-1s" }} />
+              <Electron duration="4s" style={{ animationDelay: "-0.5s" }} />
+            </Orbit>
+          </AtomContainer2>
+           {/* Animação do mobile (visível apenas no mobile) */}
+           <MobileDotsContainer>
+            <MobileDot delay="0s" />
+            <MobileDot delay="0.5s" />
+            <MobileDot delay="1s" />
+          </MobileDotsContainer>
           <h2>DESENVOLVEDOR WEB</h2>
           <p>
-            Sou um web designer especializado em criar sites e interfaces visuais utilizando
-            ferramentas como WordPress e Elementor. Meu trabalho combina design funcional e criativo, 
-            desenvolvido com o suporte de ferramentas como Photoshop e Figma para garantir layouts modernos, 
-            responsivos e alinhados à identidade visual do cliente. Com foco na experiência do usuário, 
-            entrego soluções personalizadas que transformam ideias em projetos digitais únicos e impactantes.
+          Desenvolvedor Web Full Stack com experiência em Java (Spring Boot), JavaScript (React, Vite), PostgreSQL e Firebase. 
+          Construo APIs seguras e escaláveis, desenvolvendo sistemas como e-commerces, dashboards e apps interativos. 
+          No frontend, foco em React com Styled Components, e no backend, em Spring Boot e Node com boas práticas e segurança. 
+          Sempre buscando inovação, performance e eficiência. 
           </p>
         </Card>
       </Secao>
-      <TechBar/>
+      <TechBar />
     </SobreContainer>
   );
 };

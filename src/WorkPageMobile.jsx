@@ -1,4 +1,5 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect  } from 'react';
+
 import styled, { createGlobalStyle } from 'styled-components';
 import Pro from "./assets/Projeto1.jpeg";
 import Pro2 from "./assets/Projeto2.jpeg";
@@ -52,9 +53,9 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  padding-top: 20px;
   font-size: 3rem;
   margin-bottom: 50px;
+  padding-top: 20px;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -64,8 +65,8 @@ const Title = styled.h1`
 
 const ProjectContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   background: ${colors.projectBackground};
   color: ${colors.projectText};
   margin: 20px auto;
@@ -83,24 +84,21 @@ const ProjectContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
     width: 90%;
     padding: 15px;
   }
 `;
 
 const ImageWrapper = styled.div`
-  width: 45%;
+  width: 100%;
   height: 200px;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  margin-bottom: 20px;
 
   @media (max-width: 768px) {
-    width: 100%;
     height: 150px;
-    margin-bottom: 20px;
   }
 `;
 
@@ -117,7 +115,7 @@ const ProjectImage = styled.img`
   }
 
   @media (max-width: 768px) {
-    ${ProjectContainer}:hover & {
+    ${ProjectContainer}:active & {
       transform: none;
     }
   }
@@ -146,21 +144,12 @@ const TechStack = styled.div`
     transform: translateY(0);
     height: auto;
     padding: 5px;
-    
-    ${ProjectContainer}:active & {
-      transform: translateY(0);
-  }}
-  
+  }
 `;
 
 const ProjectContent = styled.div`
-  width: 50%;
-  text-align: left;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    text-align: center;
-  }
+  width: 100%;
+  text-align: center;
 `;
 
 const ProjectTitle = styled.h2`
@@ -183,6 +172,18 @@ const ProjectDescription = styled.p`
   }
 `;
 
+const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+`;
+
 const ProjectLink = styled.a`
   display: inline-block;
   padding: 10px 20px;
@@ -190,15 +191,13 @@ const ProjectLink = styled.a`
   color: ${colors.text};
   border-radius: 5px;
   transition: background 0.3s ease;
-  margin-right: 10px;
 
   &:hover {
     background: darken(${colors.tech}, 10%);
   }
 
   @media (max-width: 768px) {
-    width: 100%;
-    margin-bottom: 10px;
+    width: 70%;
   }
 `;
 
@@ -210,12 +209,16 @@ const GitHubCodeButton = styled.a`
   border-radius: 5px;
   transition: background 0.3s ease;
 
+
   &:hover {
     background: #555;
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
   }
 `;
 
@@ -276,18 +279,18 @@ const TechButton = styled.span`
 `;
 
 // Componente da página de trabalhos
-const WorksPage = () => {
+const WorksPageMobile = () => {
   const [expanded, setExpanded] = useState(false);
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
-  
-    useEffect(() => {
-      const handleResize = () => setIsDesktop(window.innerWidth > 768);
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
-  
-    if (!isDesktop) return null; // Bloqueia a exibição no desktop
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  if (!isMobile) return null; // Bloqueia a exibição no desktop
+  
   const initialProjects = [
     {
       id: 1,
@@ -349,8 +352,8 @@ const WorksPage = () => {
       <GlobalStyle />
       <Container>
         <Title>TRABALHOS</Title>
-        {allProjects.map((project, index) => (
-          <ProjectContainer key={project.id} style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
+        {allProjects.map((project) => (
+          <ProjectContainer key={project.id}>
             <ImageWrapper>
               <ProjectImage src={project.image} />
               <TechStack>
@@ -362,8 +365,10 @@ const WorksPage = () => {
             <ProjectContent>
               <ProjectTitle>{project.title}</ProjectTitle>
               <ProjectDescription>{project.description}</ProjectDescription>
-              <ProjectLink href={project.link} target='_blank'>Link do projeto</ProjectLink>
-              <GitHubCodeButton href="https://github.com/seu-usuario/nutricionista" target="_blank">Código no GitHub</GitHubCodeButton>
+              <ButtonsContainer>
+                <ProjectLink href={project.link} target='_blank'>Link do projeto</ProjectLink>
+                <GitHubCodeButton href="https://github.com/seu-usuario/nutricionista" target="_blank">Código no GitHub</GitHubCodeButton>
+              </ButtonsContainer>
             </ProjectContent>
           </ProjectContainer>
         ))}
@@ -375,7 +380,4 @@ const WorksPage = () => {
   );
 };
 
-export default WorksPage;
-
-
-
+export default WorksPageMobile;
