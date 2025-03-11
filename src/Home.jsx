@@ -1,10 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import Trabalhos from './WorksPage';
 import Sobre from './Sobre';
 import ExperienceStats from './Experience';
 import ContactSection from './Contact';
 import WorksPageMobile from './WorkPageMobile';
-import NavBar from './NavBar';
+import NavBar from './Navbar';
 
 // Definição de cores
 const colors = {
