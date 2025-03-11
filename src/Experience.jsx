@@ -93,6 +93,7 @@ const Description = styled.div`
   line-height: 1.5;
   text-align: start; /* Alinha o texto à esquerda */
 
+
   span{
     color: #ffffffae;
   }
@@ -103,7 +104,9 @@ const Description = styled.div`
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
+
   }
+  
 `;
 
 // Componente principal

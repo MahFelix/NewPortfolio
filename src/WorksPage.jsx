@@ -47,6 +47,7 @@ const GlobalStyle = createGlobalStyle`
 
 // Componentes estilizados
 const Container = styled.div`
+  background-color: #4E74A6;
   text-align: center;
   padding: 20px;
 `;
