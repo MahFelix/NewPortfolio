@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: ${colors.background};
+    background-color:#4E74A6;
     color: ${colors.text};
   }
 

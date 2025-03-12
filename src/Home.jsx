@@ -7,6 +7,7 @@ import ContactSection from './components/Footer';
 import WorksPageMobile from './components/WorkPageMobile';
 import NavBar from './components/Navbar';
 
+
 // Definição de cores
 const colors = {
   background: '#1E1E1E',
@@ -24,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Arial', sans-serif;
     background-color: ${colors.background};
     color: ${colors.text};
+   
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -50,6 +52,7 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
   text-align: center;
   position: relative;
+  
 `;
 
 const Section = styled.section`
@@ -72,6 +75,7 @@ const HomeContent = styled.div`
   text-align: center;
   position: relative;
   z-index: 1;
+
 `;
 
 const Greeting = styled.p`
