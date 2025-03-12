@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { FaLinkedin, FaInstagram, FaWhatsapp, FaEnvelope, FaGithub } from 'react-icons/fa'; // Importando ícones
-import Profile from './assets/me2.jpg';
-import Fundo from './assets/Fundo.svg'
+import Profile from '../assets/me2.jpg';
+import Fundo from '../assets/Fundo.svg'
 
 // Definindo variáveis de cores
 const colors = {
@@ -22,7 +22,7 @@ const blink = keyframes`
 const GlobalStyle = styled.div`
   background-color: ${colors.background};
   color: ${colors.text};
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   padding-top: 60px;
   display: flex;
   justify-content: center;
@@ -51,10 +51,11 @@ const ContactContainer = styled.div`
 const TextColumn = styled.div`
   flex: 1;
   text-align: start;
-  padding-left: 200px;
+  padding-left: 100px;
 
   @media (max-width: 768px) {
     padding: 0;
+   
   }
 `;
 
@@ -112,6 +113,11 @@ const Description = styled.p`
   line-height: 1.5;
   margin-bottom: 30px;
   color: #ffffffac;
+  width: 80%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 // Linha divisória
@@ -140,9 +146,14 @@ const ContactLink = styled.a`
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid ${colors.border}; /* Borda fina transparente */
+  border-radius: 8px; /* Bordas arredondadas */
+  background-color: rgba(255, 255, 255, 0.05); /* Fundo levemente transparente */
 
   &:hover {
     opacity: 0.8;
+    background-color: rgba(255, 255, 255, 0.1); /* Efeito ao passar o mouse */
   }
 `;
 
@@ -172,19 +183,19 @@ const ContactSection = () => {
           <Divider />
           <ContactInfo>
             <ContactLink href="https://www.linkedin.com/in/agnaldofelix/" target="_blank">
-              <FaLinkedin /> LinkedIn
+              <FaLinkedin  color='#00b7ff'/> LinkedIn
             </ContactLink>
             <ContactLink href="https://instagram.com" target="_blank">
-              <FaInstagram /> Instagram
+              <FaInstagram  color='#00b7ff'/> Instagram
             </ContactLink>
-            <ContactLink href="https://wa.me/+5579996848609" target="_blank">
-              <FaWhatsapp /> WhatsApp
+            <ContactLink href="https://wa.me/+5579996848609" target="_blank" >
+              <FaWhatsapp color='#00b7ff' /> WhatsApp
             </ContactLink>
             <ContactLink href="mailto:agnaldo12543@hotmail.com">
-              <FaEnvelope /> Email
+              <FaEnvelope  color='#00b7ff'/> Email
             </ContactLink>
             <ContactLink href="https://github.com/MahFelix" target="_blank">
-              <FaGithub /> GitHub
+              <FaGithub  color='#00b7ff'/> GitHub
             </ContactLink>
           </ContactInfo>
           <Footer>

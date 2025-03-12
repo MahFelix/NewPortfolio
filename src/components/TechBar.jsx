@@ -25,6 +25,7 @@ const TechBarContainer = styled.section`
   mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 8%, rgb(0, 0, 0) 92%, rgba(0, 0, 0, 0) 100%);
   overflow: hidden;
   background-color: #2CA1CF; // Cor de fundo
+  margin-top: 50px;
 `;
 
 // Container do slider
@@ -65,7 +66,7 @@ const TechItem = styled.li`
 
   @media (max-width: 768px) {
     width: 120px;
-    animation: ${slide} 5s linear infinite;
+    animation: ${slide} 30s linear infinite;
     padding: 10px;
   }
   

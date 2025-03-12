@@ -1,12 +1,12 @@
 import { useState, useEffect  } from 'react';
 
 import styled, { createGlobalStyle } from 'styled-components';
-import Pro from "./assets/Projeto1.jpeg";
-import Pro2 from "./assets/Projeto2.jpeg";
-import Pro3 from "./assets/Projeto3.jpeg";
-import Pro4 from "./assets/Projeto4.jpeg";
-import Pro5 from "./assets/Projeto5.jpeg";
-import Pro6 from "./assets/Projeto6.jpeg";
+import Pro from "../assets/Projeto1.jpeg";
+import Pro2 from "../assets/Projeto2.jpeg";
+import Pro3 from "../assets/Projeto3.jpeg";
+import Pro4 from "../assets/Projeto4.jpeg";
+import Pro5 from "../assets/Projeto5.jpeg";
+import Pro6 from "../assets/Projeto6.jpeg";
 
 // Definindo variáveis de cores
 const colors = {
@@ -21,7 +21,7 @@ const colors = {
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: ${colors.background};
     color: ${colors.text};
   }
@@ -58,7 +58,7 @@ const Title = styled.h1`
   padding-top: 20px;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    
     margin-bottom: 30px;
   }
 `;
@@ -351,7 +351,7 @@ const WorksPageMobile = () => {
     <>
       <GlobalStyle />
       <Container>
-        <Title>TRABALHOS</Title>
+        <Title>Trabalhos</Title>
         {allProjects.map((project) => (
           <ProjectContainer key={project.id}>
             <ImageWrapper>

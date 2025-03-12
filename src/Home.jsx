@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import Trabalhos from './WorksPage';
-import Sobre from './Sobre';
-import ExperienceStats from './Experience';
-import ContactSection from './Contact';
-import WorksPageMobile from './WorkPageMobile';
-import NavBar from './Navbar';
+import Trabalhos from './components/WorksPage';
+import Sobre from './components/Sobre';
+import ExperienceStats from './components/Experience';
+import ContactSection from './components/Footer';
+import WorksPageMobile from './components/WorkPageMobile';
+import NavBar from './components/Navbar';
 
 // Definição de cores
 const colors = {
@@ -61,7 +61,7 @@ const Section = styled.section`
   position: relative;
 
   @media (max-width: 768px) {
-    height: 100vh;
+    height: 90vh;
   }
 `;
 
@@ -111,15 +111,15 @@ const AtomContainer = styled.div`
   position: absolute;
   width: 120px;
   height: 120px;
-  top: 15%;
+  top: 10%;
   right: 47%;
   z-index: 0;
 
   @media (max-width: 768px) {
-    width: 120px;
-  height: 120px;
-  top: 10%;
-  right: 35%;
+    width: 90px;
+  height: 90px;
+  top: 5%;
+  right: 40%;
   }
 
 

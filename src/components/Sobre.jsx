@@ -4,7 +4,7 @@ import TechBar from "./TechBar";
 const SobreContainer = styled.div`
   background-color: #000000;
   color: #2CA1CF;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,22 +34,28 @@ const Secao = styled.div`
     grid-template-columns: 1fr;
     text-align: center;
     width: 100%;
-    gap: 60px; /* Aumentei o gap para dar espaço para a animação */
+    gap: 60px;
   }
 `;
 
 const Card = styled.div`
-  max-width: 500px;
   padding: 20px;
   position: relative;
+  border: 1px solid #ffffff7f;
+  border-radius: 20px;
+  background-color: #33323257;
+  gap: 20px;
+
+  
 
   &:nth-child(1) {
     justify-self: start;
+    
   }
 
   &:nth-child(2) {
     justify-self: end;
-    margin-top: 200px;
+    margin-top: 200px; /* Adiciona margin-top de 200px ao segundo card */
   }
 
   h2 {
@@ -61,7 +67,6 @@ const Card = styled.div`
     font-size: 1rem;
     line-height: 1.6;
     color: #2ca1cfc1;
-  
   }
 
   @media (max-width: 768px) {
@@ -73,7 +78,7 @@ const Card = styled.div`
     align-items: center;
 
     &:nth-child(2) {
-      margin-top: 0;
+      margin-top: 0; /* Remove o margin-top no mobile */
     }
   }
 `;
@@ -92,21 +97,23 @@ const AtomContainer = styled.div`
   top: 1%;
   left: -20%;
   transform: translate(-50%, -50%);
-  @media (max-width: 768px) {
-    display: none; /* Esconde no mobile */
-  }
 
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
+
 const AtomContainer2 = styled.div`
   position: absolute;
   width: 120px;
   height: 120px;
   bottom: -15%;
-  right: -40%;
+  right: -45%;
   transform: translate(-50%, -50%);
+  margin-top: 20px;
 
   @media (max-width: 768px) {
-    display: none; /* Esconde no mobile */
+    display: none;
   }
 `;
 
@@ -147,7 +154,6 @@ const Orbit = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-
 /* Animação para os dots no mobile */
 const moveDot = keyframes`
   0% { transform: translateY(0); }
@@ -157,7 +163,7 @@ const moveDot = keyframes`
 
 /* Container para os dots no mobile */
 const MobileDotsContainer = styled.div`
-  display: none; /* Esconde por padrão */
+  display: none;
 
   @media (max-width: 768px) {
     display: flex;
@@ -180,7 +186,7 @@ const MobileDot = styled.div`
 const Sobre = () => {
   return (
     <SobreContainer>
-      <Titulo>SOBRE MIM</Titulo>
+      <Titulo>Sobre mim</Titulo>
       <Secao>
         <Card>
           <AtomContainer>
@@ -199,8 +205,7 @@ const Sobre = () => {
             </Orbit>
           </AtomContainer>
 
-           {/* Animação do mobile (visível apenas no mobile) */}
-           <MobileDotsContainer>
+          <MobileDotsContainer>
             <MobileDot delay="0s" />
             <MobileDot delay="0.5s" />
             <MobileDot delay="1s" />
@@ -231,18 +236,19 @@ const Sobre = () => {
               <Electron duration="4s" style={{ animationDelay: "-0.5s" }} />
             </Orbit>
           </AtomContainer2>
-           {/* Animação do mobile (visível apenas no mobile) */}
-           <MobileDotsContainer>
+
+          <MobileDotsContainer>
             <MobileDot delay="0s" />
             <MobileDot delay="0.5s" />
             <MobileDot delay="1s" />
           </MobileDotsContainer>
+
           <h2>DESENVOLVEDOR WEB</h2>
           <p>
-          Desenvolvedor Web Full Stack com experiência em Java (Spring Boot), JavaScript (React, Vite), PostgreSQL e Firebase. 
-          Construo APIs seguras e escaláveis, desenvolvendo sistemas como e-commerces, dashboards e apps interativos. 
-          No frontend, foco em React com Styled Components, e no backend, em Spring Boot e Node com boas práticas e segurança. 
-          Sempre buscando inovação, performance e eficiência. 
+            Desenvolvedor Web Full Stack com experiência em Java (Spring Boot), JavaScript (React, Vite), PostgreSQL e Firebase. 
+            Construo APIs seguras e escaláveis, desenvolvendo sistemas como e-commerces, dashboards e apps interativos. 
+            No frontend, foco em React com Styled Components, e no backend, em Spring Boot e Node com boas práticas e segurança. 
+            Sempre buscando inovação, performance e eficiência.
           </p>
         </Card>
       </Secao>

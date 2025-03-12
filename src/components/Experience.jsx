@@ -12,7 +12,7 @@ const colors = {
 const GlobalStyle = styled.div`
   background-color: ${colors.background};
 
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   padding: 40px;
   display: flex;
   justify-content: center;

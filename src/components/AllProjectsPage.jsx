@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Pro from "./assets/Projeto1.jpeg";
 import Pro2 from "./assets/Projeto2.jpeg";
 import Pro3 from "./assets/Projeto3.jpeg";
+import GlobalStyle from '../GlobalStyles';
 
 const colors = {
   background: '#4E74A6',
@@ -97,6 +98,7 @@ const GitHubButton = styled.a`
 
 const AllProjectsPage = () => {
   return (
+    <GlobalStyle>
     <Container>
       <Title>Todos os Projetos</Title>
       <ProjectsGrid>
@@ -136,6 +138,7 @@ const AllProjectsPage = () => {
         Veja mais no GitHub
       </GitHubButton>
     </Container>
+    </GlobalStyle>
   );
 };
 
