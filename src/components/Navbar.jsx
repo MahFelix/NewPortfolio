@@ -17,6 +17,7 @@ const Nav = styled.nav`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
+    margin-top: 2px;
   }
 `;
 
