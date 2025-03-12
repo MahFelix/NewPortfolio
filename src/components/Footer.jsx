@@ -153,7 +153,7 @@ const ContactLink = styled.a`
 
   &:hover {
     opacity: 0.8;
-    background-color: rgba(255, 255, 255, 0.1); /* Efeito ao passar o mouse */
+    background-color: rgba(106, 146, 197, 0.61); /* Efeito ao passar o mouse */
   }
 `;
 
@@ -170,7 +170,7 @@ const Footer = styled.div`
 const ContactSection = () => {
   return (
     <GlobalStyle>
-      <ContactContainer>
+      <ContactContainer id='contato'>
         <TextColumn>
           <MainTitle>
             <BlinkingDot /> {/* Ponto verde à esquerda */}

@@ -20,6 +20,7 @@ const Nav = styled.nav`
   }
 `;
 
+
 const Button = styled.button`
   background: ${({ variant }) => (variant === 'outline' ? 'transparent' : colors.primary)};
   color: ${colors.text};
@@ -32,8 +33,8 @@ const Button = styled.button`
   width: 100%;
 
   &:hover {
-    background: ${({ variant }) => (variant === 'outline' ? colors.text : colors.primary)};
-    color: ${({ variant }) => (variant === 'outline' ? colors.primary : colors.text)};
+    background: ${colors.text}; /* Fundo azul ao passar o mouse */
+    color: ${colors.primary}; /* Texto preto ao passar o mouse */
   }
 
   @media (max-width: 768px) {
@@ -42,12 +43,20 @@ const Button = styled.button`
 `;
 
 const NavBar = () => {
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   return (
     <Nav>
-      <Button variant="outline">Início</Button>
-      <Button variant="outline">Trabalhos</Button>
-      <Button variant="outline">Sobre</Button>
-      <Button variant="outline">Contato</Button>
+     <Button onClick={() => scrollToSection('inicio')}>Início</Button>
+      <Button onClick={() => scrollToSection('trabalhos')}>Trabalhos</Button>
+      <Button onClick={() => scrollToSection('sobre')}>Sobre</Button>
+      <Button onClick={() => scrollToSection('contato')}>Contato</Button>
     </Nav>
   );
 };

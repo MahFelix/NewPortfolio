@@ -185,7 +185,7 @@ const MobileDot = styled.div`
 
 const Sobre = () => {
   return (
-    <SobreContainer>
+    <SobreContainer id="sobre">
       <Titulo>Sobre mim</Titulo>
       <Secao>
         <Card>
