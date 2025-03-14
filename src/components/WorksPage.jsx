@@ -1,11 +1,14 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Pro from "../assets/Projeto1.jpeg";
 import Pro2 from "../assets/Projeto2.jpeg";
-import Pro3 from "../assets/Projeto3.jpeg";
-import Pro4 from "../assets/Projeto4.jpeg";
-import Pro5 from "../assets/Projeto5.jpeg";
-import Pro6 from "../assets/Projeto6.jpeg";
+import Pro3 from "../assets/AerisTT.jpeg";
+import Pro4 from "../assets/Projeto3.jpeg";
+import Pro5 from "../assets/SonusT.jpeg";
+import Pro6 from "../assets/VanguardT.jpeg";
+import Pro7 from "../assets/CaelumT.jpeg";
+import Pro8 from "../assets/RifaT.jpeg";
+import Pro9 from "../assets/FarmaciaT.jpeg";
 
 // Definindo variáveis de cores
 const colors = {
@@ -281,40 +284,40 @@ const TechButton = styled.span`
 // Componente da página de trabalhos
 const WorksPage = () => {
   const [expanded, setExpanded] = useState(false);
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
-  
-    useEffect(() => {
-      const handleResize = () => setIsDesktop(window.innerWidth > 768);
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
-  
-    if (!isDesktop) return null; // Bloqueia a exibição no desktop
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth > 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  if (!isDesktop) return null; // Bloqueia a exibição no desktop
 
   const initialProjects = [
     {
       id: 1,
       image: Pro,
-      title: "Cherry Blossom",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      technologies: ["React", "Node.js", "MongoDB","React", "Node.js"],
+      title: "Cherry Blossom - Ecommerce Digital",
+      description: "Projeto de um Ecommerce Digital, feito para apresentar uma coleção de bolsas de crochê de uma cliente. O foco foi criar uma vitrine digital, intuitiva e otimizada para dispositivos móveis.",
+      technologies: ["React", "SpringBoot", "MySQL", "Figma", "Firebase"],
       link: "https://cherryblossomsite.netlify.app/",
     },
     {
       id: 2,
       image: Pro2,
-      title: "Nutricionista",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      technologies: ["Vue.js", "Express", "PostgreSQL"],
-      link: "#",
+      title: "Site Institucional - Nutricionista",
+      description: "Site institucional full stack desenvolvido e personalizado para uma nutricionista, garantindo uma presença digital profissional e acolhedora.",
+      technologies: ["Vite + React", "SpringBoot", "PostgreSQL", "Figma", "PhotoshopCS6"],
+      link: "https://dayanesouzanutri.netlify.app/",
     },
     {
       id: 3,
       image: Pro3,
-      title: "Site Chef de Primeira",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      technologies: ["React", "Node.js", "MongoDB"],
-      link: "#",
+      title: "Aéris – Robô Tutor Inteligente",
+      description: "O Aeris é um assistente virtual voltado para ensino e apoio terapêutico, utilizando IA para oferecer aprendizado personalizado em idiomas, Libras, programação, ensino fundamental/médio e conhecimentos gerais, além de suporte emocional com técnicas terapêuticas.",
+      technologies: ["React", "Gemini AI", "SpringBoot", "PostgreSQL"],
+      link: "https://aeris-smart-robot.netlify.app/",
     },
   ];
 
@@ -322,26 +325,50 @@ const WorksPage = () => {
     {
       id: 4,
       image: Pro4,
-      title: "Projeto 4",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      technologies: ["Vue.js", "Express", "PostgreSQL"],
-      link: "#",
+      title: "Site Infoproduto",
+      description: "Plataforma desenvolvida para aprimorar habilidades técnicas de UI/UX Design no Figma e Photoshop CS6. O site foi criado com WordPress e Elementor, proporcionando uma experiência dinâmica e personalizável.",
+      technologies: [ "Wordpress","React", "Figma", "Photoshop", "UX/UI DESIGN"],
+      link: "https://chefdeprimeira.netlify.app/",
     },
     {
       id: 5,
       image: Pro5,
-      title: "Projeto 5",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      technologies: ["React", "Node.js", "MongoDB"],
-      link: "#",
+      title: "Sonus – Assistente Digital para Sono Saudável",
+      description: "O Sonus é um assistente digital que utiliza IA para ajudar os usuários a melhorar sua rotina de sono, criando planos personalizados e fornecendo recomendações inteligentes.",
+      technologies: ["React", "SpringBoot", "Gemini AI", "PostgreSQL"],
+      link: "https://sonus-interface.vercel.app/",
     },
     {
       id: 6,
       image: Pro6,
-      title: "Projeto 6",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      technologies: ["Vue.js", "Express", "PostgreSQL"],
+      title: "Vanguard Advocacia",
+      description: "Site para advocacia, desenvolvido para aprimorar habilidades técnicas de UI/UX Design no Figma e Photoshop CS6. ",
+      technologies: ["React", "Figma", "PhotoshopCS6"],
+      link: "https://vanguardadv.netlify.app/",
+    },
+    {
+      id: 7,
+      image: Pro7,
+      title: "Character Chronicle Caelum",
+      description: "O projeto é um site baseado em um universo fictício no planeta Caelum, com personagens superdotados e suas histórias criadas pelo usuário. O 1º capítulo está pronto, e o 2º está em desenvolvimento, com aventuras, confrontos e romances entre os personagens.",
+      technologies: ["React", "Tailwind", "OpenAI", "Figma"],
+      link: "https://chronicle-mu.vercel.app/",
+    },
+    {
+      id: 8,
+      image: Pro8,
+      title: "Rifa-Online",
+      description: "O projeto foi o desenvolvimento de uma landing page para uma rifa online, oferecendo uma solução simples e eficiente para criação e gerenciamento de rifas. E que atendesse as exigências do cliente",
+      technologies: ["React", "Firebase", "Material-UI"],
       link: "#",
+    },
+     {
+      id: 9,
+      image: Pro9,
+      title: "APP - Farmacia",
+      description: "O projeto consistiu no desenvolvimento de um app de farmácia para melhorar a experiência de atendimento ao cliente, trazendo mais flexibilidade e inovação.",
+      technologies: ["React", "Firebase"],
+      link: "https://farmaciapoupemaisapp.netlify.app/",
     },
   ];
 
