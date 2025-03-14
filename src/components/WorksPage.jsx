@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Importe o CSS do AOS
+
 import Pro from "../assets/Projeto1.jpeg";
 import Pro2 from "../assets/Projeto2.jpeg";
 import Pro3 from "../assets/AerisTT.jpeg";
@@ -26,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
     background-color: ${colors.background};
     color: ${colors.text};
+    scroll-behavior: smooth;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -41,10 +45,11 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: ${colors.tech};
     text-decoration: none;
+    transition: color 0.3s ease;
   }
 
   a:hover {
-    text-decoration: underline;
+    color: darken(${colors.tech}, 10%);
   }
 `;
 
@@ -81,10 +86,11 @@ const ProjectContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
@@ -97,14 +103,14 @@ const ProjectContainer = styled.div`
 
 const ImageWrapper = styled.div`
   width: 45%;
-  height: 200px;
+  height: 300px;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 150px;
+    height: 200px;
     margin-bottom: 20px;
   }
 `;
@@ -114,17 +120,9 @@ const ProjectImage = styled.img`
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
-  position: relative;
-  z-index: 1;
 
   ${ProjectContainer}:hover & {
-    transform: translateY(-30%);
-  }
-
-  @media (max-width: 768px) {
-    ${ProjectContainer}:hover & {
-      transform: none;
-    }
+    transform: scale(1.1);
   }
 `;
 
@@ -133,15 +131,15 @@ const TechStack = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 20%;
-  background: ${colors.tech};
+  height: 25%;
+  background: rgba(44, 161, 207, 0.9);
   color: ${colors.text};
   padding: 10px;
   text-align: center;
   border-radius: 0 0 10px 10px;
   transform: translateY(100%);
   transition: transform 0.5s ease;
-  z-index: 0;
+  z-index: 2;
 
   ${ProjectContainer}:hover & {
     transform: translateY(0);
@@ -151,11 +149,7 @@ const TechStack = styled.div`
     transform: translateY(0);
     height: auto;
     padding: 5px;
-    
-    ${ProjectContainer}:active & {
-      transform: translateY(0);
-  }}
-  
+  }
 `;
 
 const ProjectContent = styled.div`
@@ -199,7 +193,7 @@ const ProjectLink = styled.a`
   margin-right: 10px;
 
   &:hover {
-    background: darken(${colors.tech}, 10%);
+    background: #1b7fa5;
   }
 
   @media (max-width: 768px) {
@@ -289,10 +283,20 @@ const WorksPage = () => {
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth > 768);
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    // Inicializar o AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
+    // Limpar o evento ao desmontar o componente
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  if (!isDesktop) return null; // Bloqueia a exibição no desktop
+  if (!isDesktop) return null; // Bloqueia a exibição no mobile
 
   const initialProjects = [
     {
@@ -300,7 +304,7 @@ const WorksPage = () => {
       image: Pro,
       title: "Cherry Blossom - Ecommerce Digital",
       description: "Projeto de um Ecommerce Digital, feito para apresentar uma coleção de bolsas de crochê de uma cliente. O foco foi criar uma vitrine digital, intuitiva e otimizada para dispositivos móveis.",
-      technologies: ["React", "SpringBoot", "MySQL", "Figma", "Firebase"],
+      technologies: ["React", "SpringBoot", "MySQL", "Figma", "PhotoshopCS6","Firebase", "Styled-Components"],
       link: "https://cherryblossomsite.netlify.app/",
     },
     {
@@ -308,7 +312,7 @@ const WorksPage = () => {
       image: Pro2,
       title: "Site Institucional - Nutricionista",
       description: "Site institucional full stack desenvolvido e personalizado para uma nutricionista, garantindo uma presença digital profissional e acolhedora.",
-      technologies: ["Vite + React", "SpringBoot", "PostgreSQL", "Figma", "PhotoshopCS6"],
+      technologies: ["Vite + React", "SpringBoot", "PostgreSQL", "Figma", "PhotoshopCS6", "Styled-Components"],
       link: "https://dayanesouzanutri.netlify.app/",
     },
     {
@@ -316,7 +320,7 @@ const WorksPage = () => {
       image: Pro3,
       title: "Aéris – Robô Tutor Inteligente",
       description: "O Aeris é um assistente virtual voltado para ensino e apoio terapêutico, utilizando IA para oferecer aprendizado personalizado em idiomas, Libras, programação, ensino fundamental/médio e conhecimentos gerais, além de suporte emocional com técnicas terapêuticas.",
-      technologies: ["React", "Gemini AI", "SpringBoot", "PostgreSQL"],
+      technologies: ["React", "Gemini AI", "SpringBoot", "PostgreSQL", "Styled-Components"],
       link: "https://aeris-smart-robot.netlify.app/",
     },
   ];
@@ -327,7 +331,7 @@ const WorksPage = () => {
       image: Pro4,
       title: "Site Infoproduto",
       description: "Plataforma desenvolvida para aprimorar habilidades técnicas de UI/UX Design no Figma e Photoshop CS6. O site foi criado com WordPress e Elementor, proporcionando uma experiência dinâmica e personalizável.",
-      technologies: [ "Wordpress","React", "Figma", "Photoshop", "UX/UI DESIGN"],
+      technologies: [ "Wordpress","Elementor", "React", "Figma", "Photoshop", "UX/UI DESIGN", "Styled-Components"],
       link: "https://chefdeprimeira.netlify.app/",
     },
     {
@@ -335,7 +339,7 @@ const WorksPage = () => {
       image: Pro5,
       title: "Sonus – Assistente Digital para Sono Saudável",
       description: "O Sonus é um assistente digital que utiliza IA para ajudar os usuários a melhorar sua rotina de sono, criando planos personalizados e fornecendo recomendações inteligentes.",
-      technologies: ["React", "SpringBoot", "Gemini AI", "PostgreSQL"],
+      technologies: ["React", "SpringBoot", "Gemini AI", "PostgreSQL", "Styled-Components"],
       link: "https://sonus-interface.vercel.app/",
     },
     {
@@ -343,7 +347,7 @@ const WorksPage = () => {
       image: Pro6,
       title: "Vanguard Advocacia",
       description: "Site para advocacia, desenvolvido para aprimorar habilidades técnicas de UI/UX Design no Figma e Photoshop CS6. ",
-      technologies: ["React", "Figma", "PhotoshopCS6"],
+      technologies: ["React", "Figma", "PhotoshopCS6", "Styled-Components"],
       link: "https://vanguardadv.netlify.app/",
     },
     {
@@ -359,28 +363,31 @@ const WorksPage = () => {
       image: Pro8,
       title: "Rifa-Online",
       description: "O projeto foi o desenvolvimento de uma landing page para uma rifa online, oferecendo uma solução simples e eficiente para criação e gerenciamento de rifas. E que atendesse as exigências do cliente",
-      technologies: ["React", "Firebase", "Material-UI"],
+      technologies: ["React", "Firebase", "Material-UI", "Styled-Components"],
       link: "#",
     },
-     {
+    {
       id: 9,
       image: Pro9,
       title: "APP - Farmacia",
       description: "O projeto consistiu no desenvolvimento de um app de farmácia para melhorar a experiência de atendimento ao cliente, trazendo mais flexibilidade e inovação.",
-      technologies: ["React", "Firebase"],
+      technologies: ["React", "Firebase", "Styled-Components"],
       link: "https://farmaciapoupemaisapp.netlify.app/",
     },
   ];
-
   const allProjects = expanded ? [...initialProjects, ...additionalProjects] : initialProjects;
 
   return (
     <>
       <GlobalStyle />
       <Container id='trabalhos'>
-        <Title>Trabalhos</Title>
+        <Title data-aos="fade-up">Trabalhos</Title>
         {allProjects.map((project, index) => (
-          <ProjectContainer key={project.id} style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
+          <ProjectContainer
+            key={project.id}
+            style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}
+            data-aos="fade-up"
+          >
             <ImageWrapper>
               <ProjectImage src={project.image} />
               <TechStack>
@@ -397,7 +404,7 @@ const WorksPage = () => {
             </ProjectContent>
           </ProjectContainer>
         ))}
-        <ExpandButton onClick={() => setExpanded(!expanded)}>
+        <ExpandButton onClick={() => setExpanded(!expanded)} data-aos="fade-up">
           {expanded ? 'Mostrar menos' : 'Veja mais projetos'}
         </ExpandButton>
       </Container>
@@ -406,6 +413,3 @@ const WorksPage = () => {
 };
 
 export default WorksPage;
-
-
-

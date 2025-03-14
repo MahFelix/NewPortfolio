@@ -1,5 +1,9 @@
 import styled, { keyframes } from "styled-components";
 import TechBar from "./TechBar";
+import { useEffect } from "react";
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const SobreContainer = styled.div`
   background-color: #000000;
@@ -184,6 +188,14 @@ const MobileDot = styled.div`
 `;
 
 const Sobre = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duração da animação em milissegundos
+      once: true, // A animação ocorre apenas uma vez
+    });
+  }, []);
+
+
   return (
     <SobreContainer id="sobre">
       <Titulo>Sobre mim</Titulo>

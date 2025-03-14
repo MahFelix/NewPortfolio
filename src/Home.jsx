@@ -1,12 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import { useEffect } from 'react';
 import Trabalhos from './components/WorksPage';
 import Sobre from './components/Sobre';
 import ExperienceStats from './components/Experience';
 import ContactSection from './components/Footer';
 import WorksPageMobile from './components/WorkPageMobile';
 import NavBar from './components/Navbar';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // Definição de cores
 const colors = {
@@ -64,7 +66,8 @@ const Section = styled.section`
   position: relative;
 
   @media (max-width: 768px) {
-    height: 90vh;
+    height: 70vh;
+    padding-top: 50px;
   }
 `;
 
@@ -122,7 +125,7 @@ const AtomContainer = styled.div`
   @media (max-width: 768px) {
     width: 90px;
   height: 90px;
-  top: 5%;
+  top: 10%;
   right: 40%;
   }
 
@@ -167,6 +170,13 @@ const Orbit = styled.div`
 `;
 
 const Portfolio = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duração da animação em milissegundos
+      once: true, // A animação ocorre apenas uma vez
+    });
+  }, []);
+
   return (
     <>
       <GlobalStyle />
