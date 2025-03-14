@@ -222,15 +222,14 @@ const Sobre = () => {
             <MobileDot delay="0.5s" />
             <MobileDot delay="1s" />
           </MobileDotsContainer>
-
-          <h2>WEB DESIGNER</h2>
+          <h2>DESENVOLVEDOR WEB</h2>
           <p>
-            Apaixonado por design moderno e interfaces intuitivas, crio experiências visuais envolventes para aplicações web, utilizando Figma e PhotoshopCS6. 
-            Desenvolvo com Wordpress ou React , garantindo layouts responsivos, animações suaves e transições elegantes. 
-            Meu foco é desenvolver interfaces limpas e funcionais, priorizando usabilidade e estética. 
-            Tenho experiência na criação de dashboards administrativos, e-commerces e aplicativos interativos, s
-            empre buscando inovação e acessibilidade.
+            Desenvolvedor Web Full Stack com experiência em Java (Spring Boot), JavaScript (React, Vite), PostgreSQL e Firebase. 
+            Construo APIs seguras e escaláveis, desenvolvendo sistemas como e-commerces, dashboards e apps interativos. 
+            No frontend, foco em React com Styled Components, e no backend, em Spring Boot e Node com boas práticas e segurança. 
+            Sempre buscando inovação, performance e eficiência.
           </p>
+         
         </Card>
         <Card>
           <AtomContainer2>
@@ -254,14 +253,15 @@ const Sobre = () => {
             <MobileDot delay="0.5s" />
             <MobileDot delay="1s" />
           </MobileDotsContainer>
-
-          <h2>DESENVOLVEDOR WEB</h2>
+          <h2>WEB DESIGNER</h2>
           <p>
-            Desenvolvedor Web Full Stack com experiência em Java (Spring Boot), JavaScript (React, Vite), PostgreSQL e Firebase. 
-            Construo APIs seguras e escaláveis, desenvolvendo sistemas como e-commerces, dashboards e apps interativos. 
-            No frontend, foco em React com Styled Components, e no backend, em Spring Boot e Node com boas práticas e segurança. 
-            Sempre buscando inovação, performance e eficiência.
+            Apaixonado por design moderno e interfaces intuitivas, crio experiências visuais envolventes para aplicações web, utilizando Figma e PhotoshopCS6. 
+            Desenvolvo com Wordpress ou React , garantindo layouts responsivos, animações suaves e transições elegantes. 
+            Meu foco é desenvolver interfaces limpas e funcionais, priorizando usabilidade e estética. 
+            Tenho experiência na criação de dashboards administrativos, e-commerces e aplicativos interativos, s
+            empre buscando inovação e acessibilidade.
           </p>
+        
         </Card>
       </Secao>
       <TechBar />

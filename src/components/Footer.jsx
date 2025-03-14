@@ -135,6 +135,10 @@ const ContactInfo = styled.div`
   gap: 20px;
   flex-wrap: wrap;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 // Link de contato com ícone
