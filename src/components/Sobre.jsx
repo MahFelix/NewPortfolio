@@ -45,9 +45,7 @@ const Secao = styled.div`
 const Card = styled.div`
   padding: 20px;
   position: relative;
-  border: 1px solid #ffffff7f;
   border-radius: 20px;
-  background-color: #33323257;
   gap: 20px;
 
   
@@ -80,6 +78,13 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
+  position: relative;
+  border: 1px solid #ffffff7f;
+  border-radius: 20px;
+  background-color: #33323257;
+  gap: 20px;
+
 
     &:nth-child(2) {
       margin-top: 0; /* Remove o margin-top no mobile */
@@ -222,6 +227,7 @@ const Sobre = () => {
             <MobileDot delay="0.5s" />
             <MobileDot delay="1s" />
           </MobileDotsContainer>
+       
           <h2>DESENVOLVEDOR WEB</h2>
           <p>
             Desenvolvedor Web Full Stack com experiência em Java (Spring Boot), JavaScript (React, Vite), PostgreSQL e Firebase. 
@@ -229,7 +235,7 @@ const Sobre = () => {
             No frontend, foco em React com Styled Components, e no backend, em Spring Boot e Node com boas práticas e segurança. 
             Sempre buscando inovação, performance e eficiência.
           </p>
-         
+        
         </Card>
         <Card>
           <AtomContainer2>
@@ -253,6 +259,8 @@ const Sobre = () => {
             <MobileDot delay="0.5s" />
             <MobileDot delay="1s" />
           </MobileDotsContainer>
+
+          <>
           <h2>WEB DESIGNER</h2>
           <p>
             Apaixonado por design moderno e interfaces intuitivas, crio experiências visuais envolventes para aplicações web, utilizando Figma e PhotoshopCS6. 
@@ -261,7 +269,7 @@ const Sobre = () => {
             Tenho experiência na criação de dashboards administrativos, e-commerces e aplicativos interativos, s
             empre buscando inovação e acessibilidade.
           </p>
-        
+          </>
         </Card>
       </Secao>
       <TechBar />

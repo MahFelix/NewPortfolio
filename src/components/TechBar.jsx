@@ -67,6 +67,7 @@ const TechItem = styled.li`
   background-color: rgba(255, 255, 255, 0.171);
   border-radius: 99px;
   padding: 0 20px;
+  border: 1px solid #ffffff9d;
 
   @media (max-width: 768px) {
     width: 120px;
