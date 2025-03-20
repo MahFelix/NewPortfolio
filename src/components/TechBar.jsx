@@ -1,4 +1,6 @@
 import styled, { keyframes, css } from "styled-components";
+import 'aos/dist/aos.css'; // Importe o CSS do AOS
+
 
 // Animação de deslize para a esquerda
 const slideLeft = keyframes`
@@ -33,6 +35,7 @@ const TechBarContainer = styled.section`
   overflow: hidden;
   align-items: center;
 
+
   @media (max-width: 768px) {
     padding: 10px 0;
     height: 70px;
@@ -44,7 +47,8 @@ const TechSlider = styled.ul`
   display: flex;
   width: max-content;
   gap: 52px;
-  
+  scroll-behavior: smooth;
+
   animation: ${(props) =>
     props.direction === "left"
       ? css`${slideLeft} 30s linear infinite`
@@ -68,6 +72,7 @@ const TechItem = styled.li`
   border-radius: 99px;
   padding: 0 20px;
   border: 1px solid #ffffff9d;
+  scroll-behavior: smooth;
 
   @media (max-width: 768px) {
     width: 120px;
@@ -110,7 +115,7 @@ const TechBar = () => {
         <TechSlider direction="left">
           {duplicateItems(frontendItems).map((item, index) => (
             <TechItem key={index}>
-              <img src={item.image} alt={item.text} style={{ height: '24px', marginRight: '8px' }} />
+              <img src={item.image} alt='Tech-item' style={{ height: '24px', marginRight: '8px' }} />
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '18px', fontWeight: 500, color: 'white' }}>{item.text}</p>
             </TechItem>
           ))}
@@ -122,7 +127,7 @@ const TechBar = () => {
         <TechSlider direction="right">
           {duplicateItems(backendItems).map((item, index) => (
             <TechItem key={index}>
-              <img src={item.image} alt={item.text} style={{ height: '24px', marginRight: '8px' }} />
+              <img src={item.image} alt='Tech-item' style={{ height: '24px', marginRight: '8px' }} />
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '18px', fontWeight: 500, color: 'white' }}>{item.text}</p>
             </TechItem>
           ))}

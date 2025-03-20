@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import 'aos/dist/aos.css'; // Importe o CSS do AOS
 
 // Definindo variáveis de cores
 const colors = {
@@ -18,6 +19,7 @@ const GlobalStyle = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 40vh;
+
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -56,6 +58,7 @@ const StatsItem = styled.div`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 400px;
   text-align: start; /* Alinha o texto à esquerda */
+
 
   strong {
     font-size: 32px;
@@ -111,6 +114,8 @@ const Description = styled.div`
 
 // Componente principal
 const ExperienceStats = () => {
+
+
   return (
     <GlobalStyle>
       <StatsContainer>
